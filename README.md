@@ -50,7 +50,7 @@ python3 manage.py migrate
 ```shell
 python3 manage.py runserver 0.0.0.0:8000
 ```
-<h3>Deployment</h3>
+<h3>Deployment Docker</h3>
 
 ____
 
