@@ -1,0 +1,29 @@
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_DB_HOST: db
+      DJANGO_DB_NAME: app
+      DJANGO_DB_USER: worker
+      DJANGO_DB_PASS: worker
+      DJANGO_DB_PORT: "5432"
+      DJANGO_DEBUG: "False"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: worker
+      POSTGRES_PASSWORD: worker
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
